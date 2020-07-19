@@ -94,3 +94,62 @@ console.log(isSubsequence('hello', 'hello world'));
 console.log(isSubsequence('sing', 'sting'));
 console.log(isSubsequence('abc', 'abracadabra'));
 console.log(isSubsequence('abc', 'acb'));
+
+
+function maxSubarraySum(arr, num){
+    let tempSum = 0; 
+    let maxSum = -Infinity; 
+
+    if(num > arr.length - 1){return null};
+
+    for(let i = 0; i < num; i++){
+        tempSum += arr[i];
+    }
+
+    maxSum = tempSum;
+    for(let i = num; i < arr.length; i++){
+        tempSum = tempSum + arr[i] - arr[i-num];
+        maxSum = Math.max(tempSum, maxSum);
+
+    }
+    
+    return maxSum;
+}
+
+console.log(maxSubarraySum([100,200,300,400], 2));
+
+
+
+
+///////////////////Didnt get it////////////////////////////
+// function minSubArrayLen(arr, num) {
+//     let checkingNum = 1;
+//     const total = arr.reduce(function(accumulator, currentValue){
+//         return accumulator + currentValue;
+//     });
+// }
+
+
+// function findLongestSubstring(str){
+//     if(str.length === 0){return 0}
+
+//     firstLetter = str[0];
+//     longestSubstring = 1;
+//     tempSubstring = 1;
+
+//     for(letter of str){
+//         if(firstLetter !== letter){
+//             tempSubstring ++;
+//         }
+//         else{
+//             longestSubstring = Math.max(longestSubstring, tempSubstring);
+//             tempSubstring = 1;
+//         }
+//     }
+
+//     return longestSubstring;
+// }
+
+// console.log(findLongestSubstring(''))
+// console.log(findLongestSubstring('rithmschool'))
+// console.log(findLongestSubstring('thisisawesome'))
